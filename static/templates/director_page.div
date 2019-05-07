@@ -1,0 +1,22 @@
+<div id="director_page">
+
+  <!-- mustache: movies list has data -->
+  <p>There are {{ movies.length }} movies for this director</p>
+
+  {{ #movies }}
+  <div class="movie">
+    <a href="{{ movie_url }}"><img src="{{ poster_url }}" border="0"/></a>
+    <div class="movie_desc">
+      <p><a href="{{ movie_url }}">{{ moviename }}</a></p>
+    </div>
+  </div>
+
+  <div style="clear: left"></div>
+  {{ /movies }}
+
+  <!-- mustache: movies list is empty -->
+  {{ ^movies }}
+  <p>This director does not have any movies<p>
+  {{ /movies }}
+
+</div>

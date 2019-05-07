@@ -1,0 +1,12 @@
+Date ... 05/07/2019
+Desc ... notes.mysql.install.txt
+
+
+===============================
+Install mysql (on Ubuntu 18.04)
+===============================
+
+Install mysql
+  . sudo apt-get update
+  . sudo apt-get install mysql-server
+

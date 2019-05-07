@@ -1,0 +1,190 @@
+create.load.db.sh
+
+==================
+db.dropDatabase ()
+==================
+
+{ "dropped" : "movieapp", "ok" : 1 }
+
+================
+db.users.save ()
+================
+
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "nsimon" })
+
+====================
+db.directors.save ()
+====================
+
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "McDonagh" })
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "Peele" })
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "Quentin" })
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "Reitman" })
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "Scorsese" })
+
+=================
+db.movies.save ()
+=================
+
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "In_Bruges_2008"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Seven_Psychopaths_2012"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Six_Shooter_2004"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "The_Guard_2011"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Three_Billboards_Outside_Ebbing_Missouri"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Get_Out_2017"
+})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "Us_2019" })
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Jackie_Brown_1997"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Kill_Bill_V1_2003"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Kill_Bill_V2_2004"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Pulp_Fiction_1994"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Reservoir_Dogs_1992"
+})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "Juno_2007" })
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Thank_You_For_Smoking_2005"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Up_in_the_Air_2009"
+})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "Casino_1995" })
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Goodfellas_1990"
+})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : "Kundun_1997" })
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Mean_Streets_1973"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Raging_Bull_1980"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "Taxi_Driver_1976"
+})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : "The_Color_of_Money_1986"
+})
+
+========================
+db.getCollectionNames ()
+========================
+
+[ "directors", "movies", "users" ]
+
+================
+db.users.find ()
+================
+
+{ "_id" : "nsimon", "username" : "nsimon" }
+
+====================
+db.directors.find ()
+====================
+
+{ "_id" : "McDonagh", "name" : "McDonagh", "description" : "McDonagh is an Irish playwright, screenwriter, producer, and director. Born and brought up in London, the son of Irish parents." }
+{ "_id" : "Peele", "name" : "Peele", "description" : "He is best known for his film and television work in the comedy and horror genres." }
+{ "_id" : "Quentin", "name" : "Quentin", "description" : "Tarantino is an American filmmaker and actor. His films are characterized by nonlinear storylines, satirical subject matter, an aestheticization of violence, extended scenes of dialogue, ensemble casts consisting of established and lesser-known performers, references to popular culture and a wide variety of other films, soundtracks primarily containing songs and score pieces from the 1960s to the 1980s, and features of neo-noir film." }
+{ "_id" : "Reitman", "name" : "Reitman", "description" : "Jason Reitman is an American film director, screenwriter, and producer, best known for directing the films Thank You for Smoking (2005), Juno (2007), Up in the Air (2009), and Young Adult (2011). As of February 2, 2010, he has received one Grammy Award, one Golden Globe, and four Academy Award nominations, two of which are for Best Director. Reitman is a dual citizen of Canada and the United States." }
+{ "_id" : "Scorsese", "name" : "Scorsese", "description" : "Scorsese is an American filmmaker and historian, whose career spans more than 50 years. His body of work addresses such themes as Italian and Sicilian-American identity, Roman Catholic concepts of guilt and redemption, faith, machismo, modern crime, and gang conflict. Many of his films are also known for their depiction of violence and liberal use of profanity." }
+
+=================
+db.movies.find ()
+=================
+
+{ "_id" : "In_Bruges_2008", "name" : "In_Bruges_2008", "directors_id" : "McDonagh", "description" : "Guilt-stricken after a job gone wrong, hitman Ray and his partner await orders from their ruthless boss in Bruges, Belgium, the last place in the world Ray wants to be." }
+{ "_id" : "Seven_Psychopaths_2012", "name" : "Seven_Psychopaths_2012", "directors_id" : "McDonagh", "description" : "A struggling screenwriter inadvertently becomes entangled in the Los Angeles criminal underworld after his oddball friends kidnap a gangsters beloved Shih Tzu." }
+{ "_id" : "Six_Shooter_2004", "name" : "Six_Shooter_2004", "directors_id" : "McDonagh", "description" : "A black and bloody Irish comedy about a sad train journey where an older man, whose wife has died that morning, encounters a strange and possibly psychotic young oddball...." }
+{ "_id" : "The_Guard_2011", "name" : "The_Guard_2011", "directors_id" : "McDonagh", "description" : "An unorthodox Irish policeman with a confrontational personality is partnered with an up-tight F.B.I. agent to investigate an international drug-smuggling ring." }
+{ "_id" : "Three_Billboards_Outside_Ebbing_Missouri", "name" : "Three_Billboards_Outside_Ebbing_Missouri", "directors_id" : "McDonagh", "description" : "A mother personally challenges the local authorities to solve her daughters murder when they fail to catch the culprit." }
+{ "_id" : "Get_Out_2017", "name" : "Get_Out_2017", "directors_id" : "Peele", "description" : "A young African-American visits his white girlfriends parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point." }
+{ "_id" : "Us_2019", "name" : "Us_2019", "directors_id" : "Peele", "description" : "A serene beach vacation turns to chaos when their doppelgangers appear and begin to terrorize them." }
+{ "_id" : "Jackie_Brown_1997", "name" : "Jackie_Brown_1997", "directors_id" : "Quentin", "description" : "A middle-aged woman finds herself in the middle of a huge conflict that will either make her a profit or cost her life." }
+{ "_id" : "Kill_Bill_V1_2003", "name" : "Kill_Bill_V1_2003", "directors_id" : "Quentin", "description" : "After awakening from a four-year coma, a former assassin wreaks vengeance on the team of assassins who betrayed her." }
+{ "_id" : "Kill_Bill_V2_2004", "name" : "Kill_Bill_V2_2004", "directors_id" : "Quentin", "description" : "The Bride continues her quest of vengeance against her former boss and lover Bill, the reclusive bouncer Budd, and the treacherous, one-eyed Elle." }
+{ "_id" : "Pulp_Fiction_1994", "name" : "Pulp_Fiction_1994", "directors_id" : "Quentin", "description" : "The lives of two mob hitmen, a boxer, a gangsters wife, and a pair of diner bandits intertwine in four tales of violence and redemption." }
+{ "_id" : "Reservoir_Dogs_1992", "name" : "Reservoir_Dogs_1992", "directors_id" : "Quentin", "description" : "When a simple jewelry heist goes horribly wrong, the surviving criminals begin to suspect that one of them is a police informant." }
+{ "_id" : "Juno_2007", "name" : "Juno_2007", "directors_id" : "Reitman", "description" : "Faced with an unplanned pregnancy, an offbeat young woman makes an unusual decision regarding her unborn child." }
+{ "_id" : "Thank_You_For_Smoking_2005", "name" : "Thank_You_For_Smoking_2005", "directors_id" : "Reitman", "description" : "Satirical comedy follows the machinations of Big Tobaccos chief spokesman, Nick Naylor, who spins on behalf of cigarettes while trying to remain a role model for his twelve-year-old son." }
+{ "_id" : "Up_in_the_Air_2009", "name" : "Up_in_the_Air_2009", "directors_id" : "Reitman", "description" : "Ryan Bingham enjoys living out of a suitcase for his job, travelling around the country firing people, but finds that lifestyle threatened by the presence of a potential love interest, and a new hire." }
+{ "_id" : "Casino_1995", "name" : "Casino_1995", "directors_id" : "Scorsese", "description" : "A tale of greed, deception, money, power, and murder occur between two best friends: a mafia enforcer and a casino executive, compete against each other over a gambling empire, and over a fast living and fast loving socialite." }
+{ "_id" : "Goodfellas_1990", "name" : "Goodfellas_1990", "directors_id" : "Scorsese", "description" : "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate." }
+{ "_id" : "Kundun_1997", "name" : "Kundun_1997", "directors_id" : "Scorsese", "description" : "From childhood to adulthood, Tibets fourteenth Dalai Lama deals with Chinese oppression and other problems." }
+{ "_id" : "Mean_Streets_1973", "name" : "Mean_Streets_1973", "directors_id" : "Scorsese", "description" : "A small-time hood aspires to work his way up the ranks of a local mob." }
+{ "_id" : "Raging_Bull_1980", "name" : "Raging_Bull_1980", "directors_id" : "Scorsese", "description" : "The life of boxer Jake LaMotta, as the violence and temper that leads him to the top in the ring destroys his life outside of it." }
+{ "_id" : "Taxi_Driver_1976", "name" : "Taxi_Driver_1976", "directors_id" : "Scorsese", "description" : "A mentally unstable veteran works as a nighttime taxi driver in New York City, where the perceived decadence and sleaze fuels his urge for violent action by attempting to liberate a presidential campaign worker and an underage prostitute." }
+{ "_id" : "The_Color_of_Money_1986", "name" : "The_Color_of_Money_1986", "directors_id" : "Scorsese", "description" : "Fast Eddie Felson teaches a cocky but immensely talented protege the ropes of pool hustling, which in turn inspires him to make an unlikely comeback." }
+
