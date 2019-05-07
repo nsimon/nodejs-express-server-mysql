@@ -2,6 +2,15 @@
 -- Desc ... schema.sql
 
 
+-- script to "drop, create, load" the movieapp database:
+--   . drop db (if exists)
+--   . create db: movieapp
+--   . create table: directors
+--   . create table: movies
+--   . load table: directors
+--   . load table: movies
+
+
 -- drop database (if exists): movieapp
 SELECT '==== dropping database: movieapp' AS '';
 DROP DATABASE IF EXISTS movieapp;
