@@ -29,7 +29,7 @@ ENGINE = InnoDB;
 
 
 -- 5. create table: movies
-SELECT '==== Creating table: movies' AS '';
+SELECT '==== creating table: movies' AS '';
 CREATE TABLE movies
 (
   director_name VARCHAR (64),
@@ -52,21 +52,15 @@ INSERT INTO directors VALUES ("Scorsese", "Scorsese is an American filmmaker and
 
 
 -- display database metadata and data
-SELECT '==== databases:' AS '';
 SHOW DATABASES;
 
-SELECT '==== tables:' AS '';
 SHOW TABLES;
 
-SELECT '==== directors: table description:' AS '';
 DESCRIBE directors;
 
-SELECT '==== movies: table description:' AS '';
 DESCRIBE movies;
 
-SELECT '==== directors: all rows:' AS '';
 SELECT * FROM directors;
 
-SELECT '==== movies: all rows:' AS '';
 SELECT * FROM movies;
 
