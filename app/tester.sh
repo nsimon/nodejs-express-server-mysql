@@ -90,7 +90,7 @@ put_create_movie_for_director ()
     printf "curl: PUT: /v1/directors/Landis/movies.json\n"
     printf "\n"
 
-    # (1) Add the movie fields to mongodb
+    # (1) Add the movie fields to mysql
     JSON_OUT="{ \"_id\" : \"Animal_House_1978\", \"name\" : \"Animal_House_1978\", \"directors_id\" : \"Landis\", \"description\" : \"At a 1962 college, Dean Vernon Wormer is determined to expel the entire Delta Tau Chi Fraternity, but those troublemakers have other plans for him.\" }"
     curl --request PUT \
          --header  "Content-Type: application/json" \
@@ -156,20 +156,20 @@ delete_one_movie ()
 # main () #
 ###########
 
-DIRECTOR_FOLDER=~/cwb206/week12/nodejs-express-server-mongodb/static/directors
+DIRECTOR_FOLDER=~/cwb206/week12/nodejs-express-server-mysql/static/directors
 
 main ()
     {
     printf "tester.sh.\n"
     printf "\n"
 
-    #get_all_directors                   # mongo-ready
-    #get_one_director_and_their_movies   # mongo-ready
-    #get_all_movies_by_a_director        # mongo-ready
-    #get_one_movie_by_a_director         # mongo-ready
+    #get_all_directors                   # mysql-ready
+    #get_one_director_and_their_movies   # 
+    #get_all_movies_by_a_director        # 
+    #get_one_movie_by_a_director         # 
 
-    #put_create_one_director             # mongo-ready   // Landis
-    #put_create_movie_for_director       # mongo-ready   // Landis/Animal_House_1978
+    #put_create_one_director             #    // Landis
+    #put_create_movie_for_director       #    // Landis/Animal_House_1978
 
     #delete_director_and_their_movies
     delete_one_movie
