@@ -4,35 +4,25 @@
 # Desc ... create.load.db.sh
 
 # Standalone script to "drop, create, then load" the movieapp database:
-#   . drop db (if exists)
-#   . create db
+#   * drop db (if exists)
+#   * create db
+#   . use db
+#   . create table: directors
+#   . create table: movies
+#   . create table: users
 #   . load directors
 #   . load movies
-
-# mongodb database schema:
-#
-# database: movieapp
-#
-# collection: directors
-#   { "_id" : "Peele",
-#     "name" : "Peele",
-#     "description" : "He is best known for his film and television work in the comedy and horror genres." }
-#   
-# collection: movies
-#   { "_id" : "Get_Out_2017",
-#     "directors_id" : "Peele",
-#     "name" : "Get_Out_2017",
-#     "description" : "A young African-American visits his white girlfriends parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point." }
 
 printf "create.load.db.sh\n"
 printf "\n"
 
-printf "==================\n"
-printf "db.dropDatabase ()\n"
-printf "==================\n"
-printf "\n"
-mongo movieapp --quiet --eval 'db.dropDatabase ()'
-printf "\n"
+mysql --user=nsimon --password='cwb206' < schema.sql | tee create.load.db.log
+
+exit
+
+################################################################################
+# being ported:                                                                #
+################################################################################
 
 ################################################################################
 # collection: users                                                            #
