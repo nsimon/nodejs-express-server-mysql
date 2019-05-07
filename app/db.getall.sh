@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Date ..... 04/23/2019
+# Date ..... 05/07/2019
 # Module ... db.getall.sh
 # Desc ..... displays all rows in directors and movies
 

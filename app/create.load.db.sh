@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Date ..... 04/23/2019
+# Date ..... 05/07/2019
 # Module ... create.load.db.sh
 # Desc ..... wrapper to run mysql with 'schema.sql'
 #            creates log file
