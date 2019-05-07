@@ -1,6 +1,6 @@
 {
-    "name": "nodejs-express-server",
-    "description": "Demo of Nodejs and Express REST API Server",
+    "name": "nodejs-express-server-mysql",
+    "description": "Demo of Nodejs and Express REST API Server with mysql",
     "version": "0.0.1",
     "private": true,
     "main": "server.js",
@@ -10,7 +10,7 @@
         "express": "^4.16.4",
         "formidable": "^1.2.1",
         "glob": "^7.1.3",
-        "mongodb": "^2.2.33",
+        "mysql": "2.x",
         "node-datetime": "^2.1.2"
     }
 }
