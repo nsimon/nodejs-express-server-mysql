@@ -2,23 +2,23 @@
 -- Desc ... schema.sql
 
 
--- 1. drop database (if exists): movieapp
+-- drop database (if exists): movieapp
 SELECT '==== dropping database: movieapp' AS '';
 DROP DATABASE IF EXISTS movieapp;
 
 
--- 2. create database: movieapp
+-- create database: movieapp
 SELECT '==== creating database: movieapp' AS '';
 CREATE DATABASE movieapp
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
 
 
--- 3. use as current db
+-- use as current db
 USE movieapp;
 
 
--- 4. create table: directors
+-- create table: directors
 SELECT '=== creating table: directors' AS '';
 CREATE TABLE directors
 (
@@ -28,7 +28,7 @@ CREATE TABLE directors
 ENGINE = InnoDB;
 
 
--- 5. create table: movies
+-- create table: movies
 SELECT '==== creating table: movies' AS '';
 CREATE TABLE movies
 (
@@ -85,16 +85,13 @@ INSERT INTO movies VALUES ("Scorsese", "Raging_Bull_1980", "The life of boxer Ja
 INSERT INTO movies VALUES ("Scorsese", "Taxi_Driver_1976", "A mentally unstable veteran works as a nighttime taxi driver in New York City, where the perceived decadence and sleaze fuels his urge for violent action by attempting to liberate a presidential campaign worker and an underage prostitute.");
 INSERT INTO movies VALUES ("Scorsese", "The_Color_of_Money_1986", "Fast Eddie Felson teaches a cocky but immensely talented protege the ropes of pool hustling, which in turn inspires him to make an unlikely comeback.");
 
--- display database metadata and data
+-- display database metadata
 SHOW DATABASES;
-
 SHOW TABLES;
-
 DESCRIBE directors;
-
 DESCRIBE movies;
 
+-- display database data
 SELECT * FROM directors;
-
 SELECT * FROM movies;
 
