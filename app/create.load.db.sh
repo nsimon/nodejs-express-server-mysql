@@ -16,7 +16,7 @@
 printf "create.load.db.sh\n"
 printf "\n"
 
-mysql --user=nsimon --password='cwb206' < schema.sql | tee create.load.db.log
+mysql --user=nsimon --password='cwb206' --table < schema.sql | tee create.load.db.log
 
 exit
 
