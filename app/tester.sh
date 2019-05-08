@@ -168,10 +168,10 @@ main ()
     #get_all_movies_by_a_director
     #get_one_movie_by_a_director
 
-    put_create_one_director             #  // Landis
-    put_create_movie_for_director       #  // Landis/Animal_House_1978
+    #put_create_one_director             #  // Landis
+    #put_create_movie_for_director       #  // Landis/Animal_House_1978
 
-    #delete_director_and_their_movies
+    delete_director_and_their_movies
     #delete_one_movie
 
     printf "====\n"
