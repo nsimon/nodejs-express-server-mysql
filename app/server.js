@@ -355,14 +355,13 @@ v1.get ([ "/directors/:director/movies.json",
     {
     // EX:    /directors/Quentin/movies.json
     // DESC:  get all movies by a director
-    // NOTE:  mongodb-ready
 
     // ex: Quentin
     var director = request.params.director;
     console.log ("director ....... " + director);
 
-    // mongodb: get movies by directror
-    m_movies.find ({ directors_id: director }).toArray (function (err, movies)
+    // mysql: get movies from directror
+    db.query ("SELECT * FROM movies WHERE director_name = '" + director + "';", function (err, movies)
         {
         var rc;
         var jsonOut;
@@ -373,7 +372,7 @@ v1.get ([ "/directors/:director/movies.json",
         if (err)
             {
             rc = 1;
-            message = "ERROR: Unable to get movies from mongodb";
+            message = "ERROR: Unable to get movies from mysql";
             }
         else
             {
