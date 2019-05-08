@@ -414,11 +414,9 @@ v1.put ("/directors/:director.json", (request, response) =>
     var directorFolder = "../static/directors/" + director;
     console.log ("directorFolder ... " + directorFolder);
 
-    var _id         = request.body._id;
     var name        = request.body.name;
     var description = request.body.description;
 
-    console.log ("_id .............. " + _id);
     console.log ("name ............. " + name);
     console.log ("description ...... " + description);
 
@@ -448,19 +446,22 @@ v1.put ("/directors/:director.json", (request, response) =>
             {
             console.log ("director folder created successfully");
 
-            // mongodb: save new director
-            m_directors.save ({ "_id" : _id, "name" : name, "description" : description }, function (err)
+            var sql = "INSERT INTO directors VALUES ('" + name + "', '" + description + "');";
+            console.log ("sql: " + sql);
+
+            // mysql: save new director
+            db.query (sql, function (err, rows)
                 {
                 if (err)
                     {
                     rc = 500;
-                    message = "ERROR: failed to save director to mongodb";
+                    message = "ERROR: failed to save director to mysql";
                     console.log (message);
                     }
                 else
                     {
                     rc = 200;
-                    message = "successfully saved director to mongodb";
+                    message = "successfully saved director to mysql";
                     console.log (message);
                     }
 
@@ -495,20 +496,18 @@ v1.put ("/directors/:director/movies.json", (request, response) =>
 
     if (content_type == "application/json")
         {
-        var _id          = request.body._id;
         var name         = request.body.name;
         var directors_id = request.body.directors_id;
         var description  = request.body.description;
 
-        console.log ("_id ............ " + _id);
         console.log ("name ........... " + name);
         console.log ("directors_id ... " + directors_id);
         console.log ("description .... " + description);
 
         // save movie fields to mongodb
-        m_movies.save ({ "_id" : _id, "name" : name, "directors_id" : directors_id, "description" : description }, function (err)
+        m_movies.save ({ "name" : name, "directors_id" : directors_id, "description" : description }, function (err)
             {
-            // { "_id" : "In_Bruges_2008",
+            // {
             //   "name" : "In_Bruges_2008",
             //   "directors_id" : "McDonagh",
             //   "description" : "Guilt-stricken after a job gone wrong, hitman Ray and his partner await orders from their ruthless boss in Bruges, Belgium, the last place in the world Ray wants to be."
