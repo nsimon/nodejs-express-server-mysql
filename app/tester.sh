@@ -66,7 +66,7 @@ put_create_one_director ()
     printf "\n"
     printf "curl: PUT: /v1/directors/Landis.json\n"
     printf "\n"
-    JSON_OUT="{ \"_id\" : \"Landis\", \"name\" : \"Landis\", \"description\" : \"John Landis began his career in the mail room of 20th Century-Fox. A high-school dropout, 18-year-old Landis made his way to Yugoslavia to work as a production assistant on Kelly's Heroes (1970). Remaining in Europe, Landis found work as an actor, extra and stuntman in many of the Spanish/Italian "spaghetti" westerns.\" }"
+    JSON_OUT="{ \"name\" : \"Landis\", \"description\" : \"John Landis began his career in the mail room of 20th Century-Fox. A high-school dropout, 18-year-old Landis made his way to Yugoslavia to work as a production assistant on Kellys Heroes (1970). Remaining in Europe, Landis found work as an actor, extra and stuntman in many of the Spanish/Italian "spaghetti" westerns.\" }"
     curl --request PUT \
          --header  "Content-Type: application/json" \
          --data "$JSON_OUT" \
@@ -91,7 +91,7 @@ put_create_movie_for_director ()
     printf "\n"
 
     # (1) Add the movie fields to mysql
-    JSON_OUT="{ \"_id\" : \"Animal_House_1978\", \"name\" : \"Animal_House_1978\", \"directors_id\" : \"Landis\", \"description\" : \"At a 1962 college, Dean Vernon Wormer is determined to expel the entire Delta Tau Chi Fraternity, but those troublemakers have other plans for him.\" }"
+    JSON_OUT="{ \"name\" : \"Animal_House_1978\", \"directors_id\" : \"Landis\", \"description\" : \"At a 1962 college, Dean Vernon Wormer is determined to expel the entire Delta Tau Chi Fraternity, but those troublemakers have other plans for him.\" }"
     curl --request PUT \
          --header  "Content-Type: application/json" \
          --data "$JSON_OUT" \
@@ -156,7 +156,7 @@ delete_one_movie ()
 # main () #
 ###########
 
-DIRECTOR_FOLDER=~/cwb206/week12/nodejs-express-server-mysql/static/directors
+DIRECTOR_FOLDER=~/cwb206/week14/nodejs-express-server-mysql/static/directors
 
 main ()
     {
@@ -168,11 +168,11 @@ main ()
     #get_all_movies_by_a_director        # 
     #get_one_movie_by_a_director         # 
 
-    #put_create_one_director             #    // Landis
+    put_create_one_director             #    // Landis
     #put_create_movie_for_director       #    // Landis/Animal_House_1978
 
     #delete_director_and_their_movies
-    delete_one_movie
+    #delete_one_movie
 
     printf "====\n"
     printf "Done\n"
