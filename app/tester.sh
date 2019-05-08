@@ -171,8 +171,8 @@ main ()
     #put_create_one_director             #  // Landis
     #put_create_movie_for_director       #  // Landis/Animal_House_1978
 
-    delete_director_and_their_movies
-    #delete_one_movie
+    #delete_director_and_their_movies
+    delete_one_movie
 
     printf "====\n"
     printf "Done\n"
