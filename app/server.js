@@ -319,19 +319,19 @@ v1.get ([ "/directors/:director/movies/:movie.json",
         if (err)
             {
             rc = 1;
-            message = "ERROR: Unable to find movie in mongodb (db error): " + movie;
+            message = "ERROR: Unable to find movie in mysql (db error): " + movie;
             console.log (message);
             }
         else if (movies.length == 0)
             {
             rc = 1;
-            message = "ERROR: Unable to find movie in mongodb (not found error): " + movie;
+            message = "ERROR: Unable to find movie in mysql (not found error): " + movie;
             console.log (message);
             }
         else
             {
             rc = 0;
-            message = "found movie in mongodb: " + movie;
+            message = "found movie in mysql: " + movie;
             console.log (message);
             }
 
