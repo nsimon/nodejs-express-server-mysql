@@ -91,7 +91,7 @@ put_create_movie_for_director ()
     printf "\n"
 
     # (1) Add the movie fields to mysql
-    JSON_OUT="{ \"name\" : \"Animal_House_1978\", \"directors_id\" : \"Landis\", \"description\" : \"At a 1962 college, Dean Vernon Wormer is determined to expel the entire Delta Tau Chi Fraternity, but those troublemakers have other plans for him.\" }"
+    JSON_OUT="{ \"director_name\" : \"Landis\", \"name\" : \"Animal_House_1978\", \"description\" : \"At a 1962 college, Dean Vernon Wormer is determined to expel the entire Delta Tau Chi Fraternity, but those troublemakers have other plans for him.\" }"
     curl --request PUT \
          --header  "Content-Type: application/json" \
          --data "$JSON_OUT" \
@@ -123,7 +123,7 @@ delete_director_and_their_movies ()
     printf "\n"
     printf "curl: DELETE: /v1/directors/Landis.json\n"
     printf "\n"
-    JSON_OUT="{ \"directorName\": \"Landis\" }"
+    JSON_OUT="{ \"director_name\": \"Landis\" }"
     curl --request DELETE \
          --header 'Content-Type: application/json' \
          --data "$JSON_OUT" \
@@ -163,13 +163,13 @@ main ()
     printf "tester.sh.\n"
     printf "\n"
 
-    #get_all_directors                   # mysql-ready
-    #get_one_director_and_their_movies   # 
-    #get_all_movies_by_a_director        # 
-    #get_one_movie_by_a_director         # 
+    #get_all_directors
+    #get_one_director_and_their_movies
+    #get_all_movies_by_a_director
+    #get_one_movie_by_a_director
 
-    put_create_one_director             #    // Landis
-    #put_create_movie_for_director       #    // Landis/Animal_House_1978
+    put_create_one_director             #  // Landis
+    put_create_movie_for_director       #  // Landis/Animal_House_1978
 
     #delete_director_and_their_movies
     #delete_one_movie
