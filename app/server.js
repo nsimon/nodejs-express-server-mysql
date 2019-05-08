@@ -104,14 +104,6 @@ var db = mysql.createConnection (
 db.connect ();
 
 /******************************************************************************/
-/* mongodb startup, initialization                                            */
-/******************************************************************************/
-
-var m_db        = "";  // database
-var m_directors = "";  // m_db.collection ("directors")
-var m_movies    = "";  // m_db.collection ("movies")
-        
-/******************************************************************************/
 /* ROUTES: vi.all()                                                           */
 /******************************************************************************/
 
@@ -480,7 +472,7 @@ v1.put ("/directors/:director/movies.json", (request, response) =>
     // RETURNS: 200 ok
     // NOTE:    gets called in 2 different ways:
     //          1. To upload poster
-    //          2. To save movie fields to mongodb
+    //          2. To save movie fields to mysql
 
     var rc;
     var message;
@@ -707,19 +699,22 @@ v1.delete ("/directors/:director/movies.json", (request, response) =>
     var rc;
     var message;
 
-    // mongodb: remove one movie
-    m_movies.deleteOne ( { name: name }, function (err, obj)
+    var sql ="DELETE FROM movies WHERE name = '" + name + "';";
+    console.log ("sql: " + sql);
+
+    // mysql: remove one movie
+    db.query (sql, function (err, rows)
         {
         if (err)
             {
             rc = 500;
-            message = "ERROR: failed to remove one movie by director from mongodb: " + name;
+            message = "ERROR: failed to remove one movie by director from mysql: " + name;
             console.log (message);
             response.status (rc).send ({ "rc": rc, "message": message });
             }
         else
             {
-            console.log ("successfully removed one movie by director from mongodb: " + name);
+            console.log ("successfully removed one movie by director from mysql: " + name);
 
             var posterJpg = (directorFolder + "/" + name + ".jpg");
             console.log ("posterJpg ........ " + posterJpg);
@@ -737,7 +732,7 @@ v1.delete ("/directors/:director/movies.json", (request, response) =>
                 fs.unlinkSync (posterJpg);
 
                 rc = 200;
-                message = "successfully removed: " + name + " (from mongodb), and its poster: " + posterJpg + " (from director folder)";
+                message = "successfully removed: " + name + " (from mysql), and its poster: " + posterJpg + " (from director folder)";
                 console.log (message);
                 response.status (rc).send ({ "rc": rc, "message": message });
                 }
