@@ -10,3 +10,7 @@ printf "\n"
 
 mysql --user=nsimon --password='cwb206' --table < schema.sql | tee create.load.db.log
 
+printf "\n"
+printf "database loaded: movieapp\n"
+printf "\n"
+
