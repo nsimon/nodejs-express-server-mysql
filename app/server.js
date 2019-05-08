@@ -300,7 +300,6 @@ v1.get ([ "/directors/:director/movies/:movie.json",
     // EX:      /directors/Quentin/movies/Pulp_Fiction_1994.json
     // DESC:    get one movie by a director
     // RETURNS: json
-    // NOTES:   mongodb-ready
 
     // ex: Quentin
     var director = request.params.director;
@@ -308,15 +307,8 @@ v1.get ([ "/directors/:director/movies/:movie.json",
     // ex: Pulp_Fiction_1994
     var movie = request.params.movie;
 
-    // $mongo movieapp --quiet --eval 'db.movies.find ({ name: "Taxi_Driver_1976" })'
-    //
-    // { "_id" : "Taxi_Driver_1976",
-    //   "name" : "Taxi_Driver_1976",
-    //   "directors_id" : "Scorsese",
-    //   "description" : "A mentally unstable veteran ..." }
-
-    // mongodb: get movies from directror
-    m_movies.find ({ name: movie }).toArray (function (err, movies)
+    // mysql: get movies from directror
+    db.query ("SELECT * FROM movies WHERE director_name = '" + director + "';", function (err, movies)
         {
         var rc = 0;
         var message = "";
