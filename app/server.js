@@ -2,23 +2,6 @@
 // Desc ..... Nodejs/express reference REST api
 
 /******************************************************************************/
-/* mongodb database schema                                                    */
-/******************************************************************************/
-
-// database: movieapp
-// 
-// collection: directors
-//     { "_id" : "Peele",
-//       "name" : "Peele",
-//       "description" : "He is best known for his film and television work in the comedy and horror genres." }
-// 
-// collection: movies
-//     { "_id" : "Get_Out_2017",
-//       "directors_id" : "Peele",
-//       "name" : "Get_Out_2017",
-//       "description" : "A young African-American visits his white girlfriends parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point." }
-
-/******************************************************************************/
 /* http status return codes:                                                  */
 /******************************************************************************/
 
@@ -34,17 +17,17 @@
 /******************************************************************************/
 
 // Required libs
-var async       = require ("async");
-var bodyParser  = require ("body-parser");
-var express     = require ("express");
-var fs          = require ("fs");
-var formidable  = require ("formidable");
-var glob        = require ("glob");
-var datetime    = require ("node-datetime");
-var path        = require ("path");
-var util        = require ("util");
-var MongoClient = require ("mongodb").MongoClient;
-var helpers     = require ("./handlers/helpers.js");
+var async      = require ("async");
+var bodyParser = require ("body-parser");
+var datetime   = require ("node-datetime");
+var express    = require ("express");
+var formidable = require ("formidable");
+var fs         = require ("fs");
+var glob       = require ("glob");
+var helpers    = require ("./handlers/helpers.js");
+var mysql      = require ("mysql");
+var path       = require ("path");
+var util       = require ("util");
 
 /******************************************************************************/
 /* log to logfile (create and append)                                         */
@@ -107,35 +90,27 @@ app.use (express.static (__dirname + "/../static"));
 app.listen (8080);
 
 /******************************************************************************/
+/* mysql startup, initialization                                              */
+/******************************************************************************/
+
+var db = mysql.createConnection (
+    {
+    host     : 'localhost',
+    user     : 'nsimon',
+    password : 'cwb206',
+    database : 'movieapp'
+    });
+
+db.connect ();
+
+/******************************************************************************/
 /* mongodb startup, initialization                                            */
 /******************************************************************************/
 
-var m_db;
-var m_directors;
-var m_movies;
-var db_name = "movieapp";
-var db_url  = "mongodb://localhost:27017/" + db_name;
- 
-MongoClient.connect (db_url, function (err, database)
-    {
-    if (err)
-        {
-        console.log ("ERROR: unable to connect to mongodb database: " + db_name);
-        console.log ("");
-        process.exit (0);
-        }
-    else
-        {
-        console.log ("Connected to mongodb: " + db_name);
-        console.log ("");
-
-        // Initialize global mongo db vars
-        m_db        = database;
-        m_directors = m_db.collection ("directors");
-        m_movies    = m_db.collection ("movies");
-        }
-    });
-
+var m_db        = "";  // database
+var m_directors = "";  // m_db.collection ("directors")
+var m_movies    = "";  // m_db.collection ("movies")
+        
 /******************************************************************************/
 /* ROUTES: vi.all()                                                           */
 /******************************************************************************/
@@ -238,10 +213,9 @@ v1.get ([ "/directors.json",
     // EX:      /directors.json
     // DESC:    get all directors
     // RETURNS: json
-    // NOTE:    mongodb-ready
 
-    // mongodb: get director names
-    m_directors.find ({ }).toArray (function (err, directors)
+    // mysql: get director names
+    db.query ("SELECT name FROM directors;", function (err, directors)
         {
         var rc;
         var jsonOut;
@@ -250,7 +224,7 @@ v1.get ([ "/directors.json",
         if (err)
             {
             rc = 1;
-            message = "Unable to get directors from mongodb";
+            message = "Unable to get directors from mysql";
             }
         else
             {
