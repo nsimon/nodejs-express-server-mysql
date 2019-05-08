@@ -610,33 +610,39 @@ v1.delete ("/directors/:director.json", (request, response) =>
     var rc;
     var message;
 
-    // mongodb: remove all movies by director
-    m_movies.remove ({ directors_id: director }, function (err, obj)
+    var sql ="DELETE FROM movies WHERE director_name = '" + director + "';";
+    console.log ("sql: " + sql);
+
+    // mysql: remove all movies by director
+    db.query (sql, function (err, rows)
         {
         if (err)
             {
             rc = 500;
-            message = "ERROR: failed to remove all movies by director from mongodb";
+            message = "ERROR: failed to remove all movies by director from mysql";
             console.log (message);
             response.status (rc).send ({ "rc": rc, "message": message });
             }
         else
             {
-            console.log ("successfully removed all movies by director from mongodb");
+            console.log ("successfully removed all movies by director from mysql");
 
-            // mongodb: remove {director} from directors
-            m_directors.remove ({ "_id" : director }, function (err, obj)
+            var sql ="DELETE FROM directors WHERE name = '" + director + "';";
+            console.log ("sql: " + sql);
+
+            // mysql: remove all movies by director
+            db.query (sql, function (err, rows)
                 {
                 if (err)
                     {
                     rc = 500;
-                    message = "ERROR: failed to remove director from mongodb";
+                    message = "ERROR: failed to remove director from mysql";
                     console.log (message);
                     response.status (rc).send ({ "rc": rc, "message": message });
                     }
                 else
                     {
-                    console.log ("successfully removed director from mongodb");
+                    console.log ("successfully removed director from mysql");
 
                     if (!fs.existsSync (directorFolder))
                         {
