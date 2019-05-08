@@ -496,33 +496,30 @@ v1.put ("/directors/:director/movies.json", (request, response) =>
 
     if (content_type == "application/json")
         {
-        var name         = request.body.name;
-        var directors_id = request.body.directors_id;
-        var description  = request.body.description;
+        var director_name = request.body.director_name;
+        var name          = request.body.name;
+        var description   = request.body.description;
 
+        console.log ("director_name... " + director_name);
         console.log ("name ........... " + name);
-        console.log ("directors_id ... " + directors_id);
         console.log ("description .... " + description);
 
-        // save movie fields to mongodb
-        m_movies.save ({ "name" : name, "directors_id" : directors_id, "description" : description }, function (err)
-            {
-            // {
-            //   "name" : "In_Bruges_2008",
-            //   "directors_id" : "McDonagh",
-            //   "description" : "Guilt-stricken after a job gone wrong, hitman Ray and his partner await orders from their ruthless boss in Bruges, Belgium, the last place in the world Ray wants to be."
-            // }
+        var sql = "INSERT INTO movies VALUES ('" + director_name + "', '" + name + "', '" + description + "');";
+        console.log ("sql: " + sql);
 
+        // mysql: save new movie
+        db.query (sql, function (err, rows)
+            {
             if (err)
                 {
                 rc = 500;
-                message = "ERROR: failed to save movie to mongodb";
+                message = "ERROR: failed to save movie to mysql";
                 console.log (message);
                 }
             else
                 {
                 rc = 200;
-                message = "successfully saved movie to mongodb";
+                message = "successfully saved movie to mysql";
                 console.log (message);
                 }
 
