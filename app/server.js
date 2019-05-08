@@ -252,24 +252,13 @@ v1.get ([ "/directors/:director.json",
     // EX:      /directors/Quentin.json
     // DESC:    get one director and their movies
     // RETURNS: json
-    // NOTE:    mongodb-ready
 
     // ex: Quentin
     var director = request.params.director;
     console.log ("director ....... " + director);
 
-    // $mongo movieapp --eval 'db.movies.find ({ directors_id: "Scorsese" })'
-    //
-    // { "_id" : "Casino_1995",             "name" : "Casino_1995",             "directors_id" : "Scorsese", "description" : "A tale of greed, deception, money, power, and murder occur between two best friends: a mafia enforcer and a casino executive, compete against each other over a gambling empire, and over a fast living and fast loving socialite." }
-    // { "_id" : "Goodfellas_1990",         "name" : "Goodfellas_1990",         "directors_id" : "Scorsese", "description" : "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate." }
-    // { "_id" : "Kundun_1997",             "name" : "Kundun_1997",             "directors_id" : "Scorsese", "description" : "From childhood to adulthood, Tibets fourteenth Dalai Lama deals with Chinese oppression and other problems." }
-    // { "_id" : "Mean_Streets_1973",       "name" : "Mean_Streets_1973",       "directors_id" : "Scorsese", "description" : "A small-time hood aspires to work his way up the ranks of a local mob." }
-    // { "_id" : "Raging_Bull_1980",        "name" : "Raging_Bull_1980",        "directors_id" : "Scorsese", "description" : "The life of boxer Jake LaMotta, as the violence and temper that leads him to the top in the ring destroys his life outside of it." }
-    // { "_id" : "Taxi_Driver_1976",        "name" : "Taxi_Driver_1976",        "directors_id" : "Scorsese", "description" : "A mentally unstable veteran works as a nighttime taxi driver in New York City, where the perceived decadence and sleaze fuels his urge for violent action by attempting to liberate a presidential campaign worker and an underage prostitute." }
-    // { "_id" : "The_Color_of_Money_1986", "name" : "The_Color_of_Money_1986", "directors_id" : "Scorsese", "description" : "Fast Eddie Felson teaches a cocky but immensely talented protege the ropes of pool hustling, which in turn inspires him to make an unlikely comeback." }
-
-    // mongodb: get movies from directror
-    m_movies.find ({ directors_id: director }).toArray (function (err, movies)
+    // mysql: get movies from directror
+    db.query ("SELECT * FROM movies WHERE director_name = '" + director + "';", function (err, movies)
         {
         var rc;
         var jsonOut;
@@ -280,7 +269,7 @@ v1.get ([ "/directors/:director.json",
         if (err)
             {
             rc = 1;
-            message = "ERROR: Unable to get movies from mongodb";
+            message = "ERROR: Unable to get movies from mysql";
             }
         else
             {
